@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:world_time/service/world_time.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -8,22 +9,50 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  Map map = {};
+
   @override
   Widget build(BuildContext context) {
+    map = ModalRoute.of(context)?.settings.arguments as Map;
+    print("passed map is ${map['worldTime']}");
+
     return Scaffold(
-      body: SafeArea(
+      body: Padding(
+          padding: const EdgeInsets.fromLTRB(10, 200, 10, 0),
           child: Column(
             children: [
-              TextButton.icon(
-                  onPressed: (){
-                    Navigator.pushNamed(context, '/location');
-                  },
-                  icon: Icon(Icons.edit_location),
-                  label: Text('Choose location')
+              Center(
+                child: TextButton.icon(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/location');
+                    },
+                    icon: const Icon(Icons.edit_location),
+                    label: const Text('Choose location')),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    map['worldTime'].location,
+                    style: const TextStyle(
+                      fontSize: 70,
+                      fontFamily: 'Delicious Handrawn',
+                      letterSpacing: 2.0,
+                    ),
+                  )
+                ],
+              ),
+              const SizedBox(height: 30),
+              Text(
+                '${map['worldTime'].dateTime.hour}:${map['worldTime'].dateTime.minute}',
+                style: const TextStyle(
+                  fontSize: 70,
+                  fontFamily: 'Delicious Handrawn',
+                  letterSpacing: 2.0,
+                ),
               )
             ],
-          )
-      ),
+          )),
     );
   }
 }
