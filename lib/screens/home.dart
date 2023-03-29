@@ -42,9 +42,9 @@ class _HomeState extends State<Home> {
                   )
                 ],
               ),
-              const SizedBox(height: 30),
+              const SizedBox(height: 10),
               Text(
-                '${map['worldTime'].dateTime.hour}:${map['worldTime'].dateTime.minute}',
+                '${map['worldTime'].time}',
                 style: const TextStyle(
                   fontSize: 70,
                   fontFamily: 'Delicious Handrawn',

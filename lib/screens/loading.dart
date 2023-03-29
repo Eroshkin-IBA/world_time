@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'dart:convert';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import 'package:world_time/service/world_time.dart';
 
@@ -32,11 +33,15 @@ class _LoadingState extends State<Loading> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: SafeArea(
+    return Scaffold(
+      backgroundColor: Colors.lightBlue[900],
+      body: const SafeArea(
         child: Padding(
           padding: EdgeInsets.all(20),
-          child: Text("loading"),
+          child: SpinKitCircle(
+            color: Colors.white,
+            size: 50.0,
+          ),
         ),
       ),
     );

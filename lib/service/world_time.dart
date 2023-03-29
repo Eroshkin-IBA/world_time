@@ -17,14 +17,14 @@ class WorldTime {
           Uri.parse("https://timeapi.io/api/Time/current/zone?timeZone=$url"));
       Map data = jsonDecode(response.body);
       //print(data);
-      // String time = data['time'];
+      time = data['time'];
       String date = data['dateTime'];
 
       dateTime = DateTime.parse(date);
 
       // now = now.add(Duration(hours: int.parse(time)));
 
-      time = dateTime.toString();
+
     } catch (e) {
       time = "ops, something go wrong";
       print(e);
